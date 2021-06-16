@@ -1,0 +1,4 @@
+Change next lines
+            <username>YOUR_GITHUB_USERNAME</username>
+            <password>YOUR_GITHUB_TOKEN</password>
+Add settings.xml from this dir to m2 dir
