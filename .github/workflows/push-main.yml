@@ -16,4 +16,6 @@ jobs:
           java-package: jdk
           architecture: x64
       - name: Build with Maven
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn -B verify
