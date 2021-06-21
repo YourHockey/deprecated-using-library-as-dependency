@@ -20,3 +20,14 @@ jobs:
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: mvn -s .github/settings.xml -B verify
+      - name: Publish Docker image to GitHub Container Registry
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ghcr.io/${{ secrets.GITHUB_REPOSITORY }}
+          USER: ${{ github.repository_owner }}
+        run: |
+          TAG_VERSION=0.1-$(echo "${GITHUB_REF}" | cut -d "/" -f3)
+          TAG=$TAG_NAME:$TAG_VERSION
+          echo $TOKEN | docker login ghcr.io -u $USER --password-stdin
+          docker build -t $TAG .
+          docker push $TAG
