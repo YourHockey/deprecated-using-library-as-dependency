@@ -4,7 +4,9 @@ import vakoom.gunmarket.ru.TimeService;
 
 
 public class Main {
+	private static final TimeServiceWrapper timeServiceWrapper = new TimeServiceWrapper();
+
 	public static void main(String[] args) {
-		System.out.println(TimeService.utcNow());
+		assert timeServiceWrapper.time().isBefore(TimeService.utcNow());
 	}
 }

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>ru.gunmarket.vakoom</groupId>
-            <artifactId>library</artifactId>
+            <artifactId>mitm-library</artifactId>
             <version>0.1</version>
         </dependency>
     </dependencies>
